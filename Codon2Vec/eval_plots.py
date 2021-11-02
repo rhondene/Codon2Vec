@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Jul 28 14:20:02 2021
 Module for computing evaluation metrics and generating plots
 @author: RWint
 """
