@@ -1,7 +1,7 @@
 # Codon2Vec
 Neural network based tool for predicting expression ('high' or 'low') directly from the codon composition of protein-coding sequences. 
-<img src='./Fig6A_schema.tiff'>
-!(./Fig6A_schema.tiff)
+<img src='https://github.com/rhondene/Codon2Vec/blob/main/Fig6A_schema.tiff'>
+
 ## Copyright Notice 
 
 Codon2Vec Copyright (c) 2021, The Regents of the University of California,
