@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Module to preprocess and transform training data for NLP model 
-Created on Fri Jul 23 16:02:36 2021
 @author: RWint
 """
 import numpy as np
