@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 @author: RWint
-Loads the pre-trained model and run predictions on new sequences
+Loads the vaed trained model and run predictions on new sequences
 """
 
 import argparse
