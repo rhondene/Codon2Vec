@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Module to train and evaluate C2V
-Created on Mon Jul 26 09:24:27 2021
 
 @author: RWint
 """
@@ -71,7 +70,3 @@ def model_train(C2V_model, feature_mat,groundtruth, test_size, val_size, out_fol
     
     
  
- #extract embeddings for more test and codon pairs
- ##make new module
- 
- #C2V_model.layers[0].get_weights()[0].shape
