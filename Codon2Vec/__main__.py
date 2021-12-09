@@ -7,7 +7,7 @@ import argparse
 import os
 from datetime import date
 import warnings
-from tensorflow import set_random_seed
+from tensorflow.random import set_seed 
 from keras.models import Sequential, save_model
 #import seaborn
 #import matplotlib.pyplot as plt
