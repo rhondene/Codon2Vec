@@ -7,7 +7,7 @@ import argparse
 import os
 from datetime import date
 import warnings
-from tensorflow.random import set_seed 
+import tensorflow as tf
 from keras.models import Sequential, save_model
 #import seaborn
 #import matplotlib.pyplot as plt
@@ -56,7 +56,7 @@ if __name__=='__main__':
 
     #if a seed is passed in for for reproducibility
     if args.seed_num:
-        set_random_seed(args.seed_num)
+        tf.random.set_seed(args.seed_num)
         np.random.seed(args.seed_num)   
 
  
