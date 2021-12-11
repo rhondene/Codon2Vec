@@ -5,10 +5,17 @@ Codon2Vec is an embedding neural network that predicts 'high' or 'low' gene expr
 ## Biological Principle: 
 **Background:** Gene expression is the universal algorithm that transduces biological instructions from DNA to direct the synthesis of proteins, the molecules that ultimately establishes a cell’s identity and function. During gene expression, a segment of DNA – a gene – is first copied into a messenger RNA (mRNA) molecule. This “message” within the mRNA is organized as a sequence of discrete units called <b>codons</b>. Each mRNA codon is then translated by its complementary tRNA molecule into a specific amino acid, the building block of proteins. 
  
-**Codon Optimization**: Natural selection has shaped codon usage to function as regulatory grammar for controlling gene expression. Most organisms have evolved an unequal representation of codons for encoding their proteins, a property known as <i>codon usage bias</i>. Additionally, the supply of cognate tRNAs varies among codons, leading to some codons being better translated than others. Indeed, it has been demonstrated in many organisms, that highly expressed mRNAs are biased toward translationally optimal codons that are decoded by abundant tRNAs. 
+**Codon Optimization**: Natural selection has shaped codon usage to function as regulatory grammar for controlling gene expression. Most organisms have evolved an unequal representation of codons for encoding their proteins, a property known as <i>codon usage bias</i>. Additionally, the supply of cognate tRNAs varies among codons, leading to some codons being better translated than others. Indeed, it has been demonstrated in many organisms, that highly expressed mRNAs are biased toward translationally optimal codons that are decoded by abundant tRNAs. As an application, a common strategy in synthetic biology for to improving the expression proteins outside of their native context involves modifying the codon usage of the exogenous mRNAs.
 
 ![C2V Schema](/Codon_optimality.png)
 
+
+## Value Proposition:
+1. **Reference-free**Unlike conventional codon usage methods, Codon2Vec does not rely on a priori knowledge of optimal codons from a pre-defined reference genes. The trained model can then be used to predict expression from new sequences.
+2. **Potentially captures codon order**: Popular codon usage bias methods are summative and therefore would fail to capture the influence of codon order on gene expression (Cannarozzi et al., 2010). In contrast, because Codon2Vect represents codons as vectors (‘embeddings’) in Euclidean space, in principle, contextually related codons are projected close together embedding space (Mikolov et al, 2013). 
+3. **Automates feature selection**:  Moreover, Codon2Vec bypasses the need for artisanal feature selection since it extracts information directly from sequences and expression data, and the function that maps codons to real-valued vectors is also learned during training
+
+. 
 
 
 
