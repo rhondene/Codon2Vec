@@ -13,7 +13,7 @@ Codon2Vec is an embedding neural network that predicts 'high' or 'low' gene expr
 ## Value Proposition:
 1. **Reference-free**Unlike conventional codon usage methods, Codon2Vec does not rely on a priori knowledge of optimal codons from a pre-defined reference genes. The trained model can then be used to predict expression from new sequences.
 2. **Potentially captures codon order**: Popular codon usage bias methods are summative and therefore would fail to capture the influence of codon order on gene expression (Cannarozzi et al., 2010). In contrast, because Codon2Vect represents codons as vectors (‘embeddings’) in Euclidean space, in principle, contextually related codons are projected close together embedding space (Mikolov et al, 2013). 
-3. **Automates feature selection**:  Moreover, Codon2Vec bypasses the need for artisanal feature selection since it extracts information directly from sequences and expression data, and the function that maps codons to real-valued vectors is also learned during training
+3. **Automates feature selection**:  Moreover, Codon2Vec bypasses the need for artisanal feature selection since it extracts information directly from sequences and expression data, and the function that maps codons to real-valued vectors is also learned during training.
 
 . 
 
