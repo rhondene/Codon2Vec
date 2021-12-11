@@ -1,13 +1,15 @@
-# Codon2Vec: 
-A neural network tool for predicting expression ('high' or 'low') directly from the codon composition of protein-coding sequences. 
+# Codon2Vec: Learning the Regulatory Grammar of Codon Optimality to Predict Gene Expression
+Codon2Vec is an embedding neural network that predicts 'high' or 'low' gene expression directly from the protein-coding sequences. Embedding neural networks are commonly used for natural language processing (NLP) applications. Analogous to how an English sentence is a string of words,  a gene can be thought of as a string of codons. Similar to how NLP neural networks model English sentences as a non-random sequence of words, we considered a coding sequence as a non-random non-overlapping array of codons (k-mers of length = 3).
 ![C2V Schema](/C2V_schema.png)
 
 ## Biological Principle: 
 **Background:** Gene expression is the universal algorithm that transduces biological instructions from DNA to direct the synthesis of proteins, the molecules that ultimately establishes a cell’s identity and function. During gene expression, a segment of DNA – a gene – is first copied into a messenger RNA (mRNA) molecule. This “message” within the mRNA is organized as a sequence of discrete units called <b>codons</b>. Each mRNA codon is then translated by its complementary tRNA molecule into a specific amino acid, the building block of proteins. 
  
-**Codon Optimization**: Natural selection has shaped codon usage to function as regulatory grammar for controlling gene expression. Most organisms have evolved an unequal representation of codons for encoding their proteins, a property known as codon usage bias. Additionally, the supply of cognate tRNAs varies among codons, leading to some codons being better translated than others. Indeed, it has been demonstrated in many organisms, that highly expressed mRNAs are biased toward translationally optimal codons that are decoded by abundant tRNAs. 
+**Codon Optimization**: Natural selection has shaped codon usage to function as regulatory grammar for controlling gene expression. Most organisms have evolved an unequal representation of codons for encoding their proteins, a property known as <i>codon usage bias</i>. Additionally, the supply of cognate tRNAs varies among codons, leading to some codons being better translated than others. Indeed, it has been demonstrated in many organisms, that highly expressed mRNAs are biased toward translationally optimal codons that are decoded by abundant tRNAs. 
 
 ![C2V Schema](/Codon_optimality.png)
+
+
 
 
 
