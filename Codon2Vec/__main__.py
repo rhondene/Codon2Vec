@@ -7,7 +7,7 @@ import argparse
 import os
 from datetime import date
 import warnings
-import tensorflow as tf
+import tensorflow as tf 
 from keras.models import Sequential, save_model
 #import seaborn
 #import matplotlib.pyplot as plt
@@ -30,8 +30,8 @@ from sklearn.metrics import roc_auc_score
 
 
 if __name__=='__main__':
-    about = 'one sentence about codon2vec does. Author and date and citation '
-    epi_note = 'link to my github to report issues '
+    about = 'A neural network tool for learning and predicting gene expression from codon usage of coding sequences. Written by Rhondene Wint, rwint@ucmerced.edu.'
+    epi_note = 'To contact the author about problems or errors, please make a github issue at https://github.com/rhondene/Codon2Vec/tree/main/Codon2Vec '
     parser = argparse.ArgumentParser(description=about,
                                      epilog=epi_note)
     parser.add_argument('-outfolder', help='Path of destination folder for output files', type=str, default='./C2V-{}'.format(date.today()), metavar='')
