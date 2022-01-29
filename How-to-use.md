@@ -13,7 +13,7 @@ Codon2Vec runs on the command-line and is compatible with both Windows and Unix 
 Installation is now completed.
 
 
-## Demonstratioj ofuse Codon2Vec
+## Demonstration of using Codon2Vec
 
 ### 1. Example input files
 Codon2Vec takes a fasta file of coding sequences and an expression table that is either comma-separated or tab-separated.  Below are guidelines for how the input files should be formatted:
