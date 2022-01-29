@@ -1,7 +1,7 @@
 # User Guide 
 
 ## Background:
-Codon2Vec runs on the command-line and is compatible with both Windows and Unix operating systems. 
+Codon2Vec runs on the command-line and is compatible with both Windows and Unix operating systems.
 ## First time setup instructions
 1. Download python3 (version 3.7 or higher) https://www.python.org/downloads/. Ensure that python is added to your operating system's path.
 2. Download the Codon2Vec repository here: https://github.com/rhondene/Codon2Vec/tree/main/Codon2Vec
@@ -13,41 +13,63 @@ Codon2Vec runs on the command-line and is compatible with both Windows and Unix 
 Installation is now completed.
 
 
-## Demonstration of using Codon2Vec
+## Walkthrough of using Codon2Vec
 
 ### 1. Example input files
 Codon2Vec takes a fasta file of coding sequences and an expression table that is either comma-separated or tab-separated.  Below are guidelines for how the input files should be formatted:
-a. fasta format
-[screen shot of fasta]  
 
-b.[screenshot of exprs]
 
-<p><font color='maroon'**Important guidelines:** </font></p>
-<li> Ensure that the sequence IDs in the fasta file match the sequence IDs in the expression table. But The fasta and expression table doesn't have to be in the same order or be the same length. </li>
-<li> For the fasta file, the program expects that sequence ID immediately follows the fish fin '>' </li>
-<li> For the expression table, ensure that the first two columns contain the ID and expression values</li>
+a. *fasta format:*
 
-### 2. Run Codon2Vec on the command-line
+<img src='./images/test_cds_pic.png' width='600' height='200'/>
 
-Open a terminal in the working folder containing the input files and Codon2Vec package folder like so:
-[inser pic of folder]
+b. *Expression table:* 
 
-To run Codon2Vec with default options, type this command on the terminal:
+<img src='./images/test_exprs_pic.png' width='200' height='200'/>
+
+<font color='maroon'>**Important guidelines**</font>
+
+<li> Ensure that the sequence IDs in the fasta file are identical to the sequence IDs in the expression table. However, the fasta and expression table doesn't have to be in the same order or contain the same number of genes . </li>
+<li> For the fasta file, the program expects that sequence ID immediately follows the fish fin '>' .</li>
+<li> For the expression table, ensure that the first two columns contain the sequence ID and expression values.</li>
+
+### 2. Running Codon2Vec on the command-line
+
+1. Open a terminal in the working folder containing the input files and Codon2Vec package folder like so:
+
+
+<img src='./images/folder_view.png' width='200' height='200'/>
+
+To see all the available options that modifies the model training, type 
+```console 
+       python ./Codon2Vec/ --help
+```
+ 
+ <img src='./images/help_screen.png' width='600' height='300'/>
+  
+
+2. To run Codon2Vec with default options, type this command on the terminal:
 ```console
 python ./Codon2Vec -CDS some_input.fasta -exprs some_exprs.csv -outfolder results
 ```
-**An example execution**:
-
-To see all the available options that modifies the model training, type 
-       ```console 
-       python ./Codon2Vec/ --help
-```
-  [insert the help pic]
-  
-  
 
 ### 3. Output: 
-Successfully running this program writes the model evaluation metrics to the standard output and a text file 
+Successfully running this program writes the evaluation metrics of the model performance on the hold-out test set to the standard output and a text file. 
+ <img src='./images/test_run.png' width='600' height='300'/>
+
+Please see the Methods section of the <a href='https://academic.oup.com/mbe/advance-article/doi/10.1093/molbev/msab372/6513383'>original manuscript </a> that explains each evaluation metric. 
+<img src='./images/auc_roc.png' style="float: left; width: 50%"/>
+
+
+**Model Performance Figures**:  The program also outputs summary figures of model evaluation such as a confusion matrix and a learning curve that compares the model accuracy during training vs validation. Learning curves and confusion matrices are widely used in machine learning to diagnose overfitting or underfitting.  ( see this <a href='https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/'> informative blog post </a>).
+
+<img src='./images/model_confusion_matrix.png' style="float: left; width: 25%; margin-right: 0.5%; margin-bottom: 0.5em;"/>
+<img src='./images/model_diagnosis_plot.png' style="float: left; width: 25%; margin-right: 0.5%; margin-bottom: 0.5em;"/>
+<p style="clear: both;"/>
+
+
+### 3. Making Predictions on New Data
+You have trained your model and are pleased with the model's predictive performance. Now you would like to use the saved model to make predictions on new data. 
 
 
 
