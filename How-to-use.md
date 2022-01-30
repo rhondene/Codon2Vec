@@ -1,8 +1,11 @@
-# User Guide 
+# User Guide:
+1. Installation
+2. Walkthrough of using Codon2Vec
+
 
 ## Background:
 Codon2Vec runs on the command-line and is compatible with both Windows and Unix operating systems.
-## First time setup instructions
+## A. First time setup instructions
 1. Download python3 (version 3.7 or higher) https://www.python.org/downloads/. Ensure that python is added to your operating system's path.
 2. Download the Codon2Vec repository here: https://github.com/rhondene/Codon2Vec/tree/main/Codon2Vec
 3. Unzip the Codon2Vec folder, and open a terminal window in the uncompressed Codon2Vec folder. 
@@ -14,7 +17,7 @@ Codon2Vec runs on the command-line and is compatible with both Windows and Unix 
 Installation is now completed.
 
 
-## Walkthrough of using Codon2Vec
+## B. Walkthrough of using Codon2Vec
 
 ### 1. Example input files
 Codon2Vec takes a fasta file of coding sequences and an expression table that is either comma-separated or tab-separated.  Below are guidelines for how the input files should be formatted:
