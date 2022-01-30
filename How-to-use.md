@@ -7,8 +7,9 @@ Codon2Vec runs on the command-line and is compatible with both Windows and Unix 
 2. Download the Codon2Vec repository here: https://github.com/rhondene/Codon2Vec/tree/main/Codon2Vec
 3. Unzip the Codon2Vec folder, and open a terminal window in the uncompressed Codon2Vec folder. 
 4. Here you will do a one-time installation of the dependencies Codon2Vec needs to run. On the terminal window type the following command:
-
+```console
        python setup.py install
+```
 6. Exit the Codon2Vec folder 
 Installation is now completed.
 
@@ -46,12 +47,16 @@ To see all the available options that modifies the model training, type
 ```
  
  <img src='./images/help_screen.png' width='600' height='300'/>
-  
+ 
 
 2. To run Codon2Vec with default options, type this command on the terminal:
 ```console
 python ./Codon2Vec -CDS some_input.fasta -exprs some_exprs.csv -outfolder results
 ```
+
+***Recommendation***: Machine learning is an iterative process and the model may converge on a local optima that is not necessarily the best optima. ( <a href='https://www.youtube.com/watch?v=IHZwWFHWa-w'> How Neural Networks Learn </a>). So perform model training multiple times to choose the model with best parameterization. 
+       
+ ***Setting Seed for Reproducibility***: Neural networks are <a href='https://machinelearningmastery.com/reproducible-results-neural-networks-keras/'>stochastic </a> algorithms by design so the training the same model on the same data yields different results. To improve the stability of results, use the ```console -seed_num ``` option.
 
 ### 3. Output: 
 Successfully running this program writes the evaluation metrics of the model performance on the hold-out test set to the standard output and a text file. 
@@ -73,8 +78,7 @@ You have trained your model and are pleased with the model's predictive performa
 ```console
 python ./Codon2Vec/predict.py -model your_trained_model -fasta new_seqs.fasta -out name_of_output
 ```
-Because of the slightly stochastic nature of the predict() function. I advise that you run the predictions multiple times (at least 10 times) and take the mean or median prediction probability.
-
+Because of the slightly stochastic nature of the predict() function. I advise that you run the predictions multiple times (at least 10 times) and take the mean or median of the prediction probabilities.
 
 
 
