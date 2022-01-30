@@ -12,23 +12,6 @@ import numpy as np
 #import seaborn
 #import matplotlib.pyplot as plt
 
-
-
-
-#model performance evaluation
-"""
-from sklearn.metrics import confusion_matrix
-from sklearn.metrics import roc_auc_score
-"""
-
-
-##### Part A: Prepare training data from expression and coding sequences
-
-
-
-#def preprocess_training_data(df_train, split_ratio)
-
-
 if __name__=='__main__':
     about = 'About: a neural network that predicts gene expression from codon usage of coding sequences. Written by Rhondene Wint, rwint@ucmerced.edu.'
     epi_note = 'To contact the author, please make a github issue at https://github.com/rhondene/Codon2Vec/tree/main/Codon2Vec '
@@ -83,7 +66,7 @@ if __name__=='__main__':
     C2V_trained=model_train.model_train(C2V_model, feature_mat, groundtruth, test_size, val_size, args.outfolder, args.seed_num)
     
     
-    ## print output message and write results of performance dict to /t file#
+    
     # save whole trained model
     if args.save_prompt=='on':
         ans = input('Save this trained model (y/n)?')
