@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Extracts the X percentile (default 10%) at the tail end of  gene expression 
+Created on Fri Jul 23 15:13:36 2021
+
 @author: RWint
 """
 

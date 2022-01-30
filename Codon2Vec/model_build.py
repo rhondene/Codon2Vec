@@ -5,17 +5,19 @@ Codon2vec Model specification
 @author: RWint
 """
 ##deep learning training  libraries
- 
-from keras.models import Sequential, Model
-from keras.layers import Dense, Embedding,Flatten, Input, BatchNormalization, Dropout
-from keras.optimizers import Adam
-from keras.utils import to_categorical
+import numpy as np
 
+def model_instantiate(max_len,seed=None):
+   ## set seed before loading keras for reproducibility
 
-
-
- ## need to link this
-def model_instantiate(max_len):
+   if seed:
+       np.random.seed(seed)
+       
+   from keras.models import Sequential, Model
+   from keras.layers import Dense, Embedding,Flatten, Input, BatchNormalization, Dropout
+   from keras.optimizers import Adam
+   from keras.utils import to_categorical
+    
    C2V_model = Sequential()
    #each of the 64 uniqe codon (feature vocabulary) is transformed into 4-dim dense vector
    embed_layer=Embedding(input_dim=64,output_dim=4, input_length=max_len)

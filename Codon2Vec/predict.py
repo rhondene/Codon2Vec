@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 @author: RWint
-Loads the vaed trained model and run predictions on new sequences
+Loads the pre-trained model and run predictions on new sequences
 """
 
 import argparse
 import os
-import numpy as np
+import pandas as pd
 import fix_fasta
 from keras.models import Sequential, save_model, load_model
 
@@ -54,39 +54,41 @@ def encode_features(cod_list,max_len=1500):
     encoded_codons = [one_hot(seq,vocab_size) for seq in cod_list]
     
     ##Step2. Padding/trimming
-    #keras embedding layer requires individual sequences to be same length
     padded_codons = pad_sequences(encoded_codons,maxlen= max_len, padding='post')
    
     return padded_codons
     
     
 if __name__=='__main__':
-    about = 'one sentence about codon2vec does. Author and date and citation '
-    epi_note = 'link to my github to report issues '
-    parser = argparse.ArgumentParser(description=about,
-                                     epilog=epi_note)
+    parser = argparse.ArgumentParser()
     #parser.add_argument('-model_j', help='Path of json file of trained model', type=str, required=True, metavar='')
-    parser.add_argument('-model', help='Path of saved trained model', type=str, required=True, metavar='')
-    parser.add_argument('-fasta', help='Path of fasta formatted file with coding sequence(s)', type=str, required=True, metavar='')
-    parser.add_argument('-out', help='Path of output text file with predictions of each sequence', type=str, required=True, metavar='')
-    #consider adding a seed option for reproducibiity
+    parser.add_argument('-model', help='Path of saved trained model', type=str, required=True)
+    parser.add_argument('-fasta', help='Path of fasta formatted file with coding sequence(s)', type=str, required=True)
+    parser.add_argument('-out', help='Path of output text file with predictions of each sequence', type=str, required=True)
     args= parser.parse_args()
     
     IDs,CDS = fix_fasta.fix_fasta(args.fasta)  #returns headers and sequences but only want sequences
     #####----------------preprocess the sequences for model input
     #transforms each coding sequence into a list of space separated codons
     cod_list,final_ids = preproc_seq(IDs,CDS)
+    pred_df=pd.DataFrame([final_ids]).T
+    pred_df.columns=['SeqID']
     #encode the codons in similar manner as training data
     encoded_seqs = encode_features(cod_list,max_len=1500)
     
     #####------------------Load the trained model------
     C2V_trained = load_model(args.model,custom_objects=None, compile=True)
     #####------------------Perform predictions-------------
+    
     preds = C2V_trained.predict(encoded_seqs)
-    preds=list(preds)
+    pred_df['Prediction_prob']=preds.flatten()
+        
+    ##write predictions and ID to file:
+    pred_df.to_csv('{}_predictions.tsv'.format(args.out), sep='\t')
 
-   ##write predictions and ID to file
-    with open(f'{args.out}.pred.out', 'w') as f:
-        for i in range(len(preds)):
-            f.write(f'{final_ids[i]}\t{+preds[i][0]}\n')
+    
+    
+   
+       
+   
     

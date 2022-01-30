@@ -1,30 +1,26 @@
 # -*- coding: utf-8 -*-
 """
 Module to train and evaluate C2V
+Created on Mon Jul 26 09:24:27 2021
 
 @author: RWint
 """
-import numpy as np
+import numpy as np    
 import pandas as pd
 import seaborn
 import matplotlib.pyplot as plt
 import eval_plots #custom module that computes model valuation metrics and related plots
-
-from sklearn.model_selection import train_test_split as tts
-
-
 from pandas.core.common import SettingWithCopyWarning
 import warnings
 
 warnings.simplefilter(action="ignore", category=SettingWithCopyWarning)
-
 seaborn.set_context('poster')
 
 ##Reproducibility
-from tensorflow import set_random_seed
 
 
-def model_train(C2V_model, feature_mat,groundtruth, test_size, val_size, out_folder,seed_num):
+
+def model_train(C2V_model, feature_mat,groundtruth, test_size, val_size, out_folder,seed_num=None):
     """Input
     model: instantiated and compiled keras neural network model object 
     feature_mat: preprocessed input matrix (2-D numpy array)
@@ -35,10 +31,12 @@ def model_train(C2V_model, feature_mat,groundtruth, test_size, val_size, out_fol
         trained model
     """
     ## if user passed in a seed number
+    
     if seed_num:
         np.random.seed(seed_num)
-        set_random_seed(seed_num)
-    
+        
+    from sklearn.model_selection import train_test_split as tts
+
     #first split test set
     X_train,X_test,  y_train, y_test= tts(feature_mat,groundtruth,test_size=test_size)
     #save the training and test sets
@@ -70,3 +68,7 @@ def model_train(C2V_model, feature_mat,groundtruth, test_size, val_size, out_fol
     
     
  
+ #extract embeddings for more test and codon pairs
+ ##make new module
+ 
+ #C2V_model.layers[0].get_weights()[0].shape

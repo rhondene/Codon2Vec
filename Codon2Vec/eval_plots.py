@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """
+Created on Wed Jul 28 14:20:02 2021
 Module for computing evaluation metrics and generating plots
 @author: RWint
 """
@@ -23,8 +24,8 @@ def train_plot(history, out_folder):
     plt.plot(history.history['val_accuracy'], linewidth=4)
     plt.title(title,
               fontsize=16, fontweight='bold')
-    plt.ylabel('Prediction Accuracy', fontsize=14)
-    plt.xlabel('Epoch', fontsize=14)
+    plt.ylabel('Prediction Accuracy', fontsize=16)
+    plt.xlabel('Epoch', fontsize=16)
     plt.xticks(fontsize=16); plt.yticks(fontsize=16)
     plt.legend(['Training set', 'Validation set'], loc='upper left', fontsize=22)
     #LEARN HOW TO CALL varibales from main into this module
@@ -54,8 +55,8 @@ def plot_confmat_AUC(X_test, y_test, model, out_folder):
             ax.text(x=j, y=i,
                     s= confmat[i,j],
                    va = 'center', ha='center', fontsize=18)
-    plt.xlabel('Predicted Exprs Level')
-    plt.ylabel('True Exprs Level')
+    plt.xlabel('Predicted Exprs Level',labelpad=10)
+    plt.ylabel('True Exprs Level',labelpad=10)
     plt.savefig('{}/model_confusion_matrix.png'.format(out_folder), dpi=300, bbox_inches='tight')
     print('Confusion matrix saved!')
     

@@ -12,21 +12,6 @@ def fas2dict(fasta):
     Output: python dictionary of information"""
     
     with open(fasta, 'r') as file:
-        #autodetect header separator
-        for line in file:
-            if line.startswith('>'):
-                head=line.strip()
-                break
-        
-       # for ch in head:
-       #    if( ch =='|' or ch==' ' or ch=='/t'):
-       #         sep=ch
-       #         break
-            
-        
-        #file is loaded as generator so add the first line to headers list for congruency
-        #headers.append(head.split(sep)[0][1:])
-        #process rest of file
         for line in file:
             if line.startswith('>'):
                 line=line.strip()
