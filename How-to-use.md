@@ -68,9 +68,12 @@ Please see the Methods section of the <a href='https://academic.oup.com/mbe/adva
 <p style="clear: both;"/>
 
 
-### 3. Making Predictions on New Data
-You have trained your model and are pleased with the model's predictive performance. Now you would like to use the saved model to make predictions on new data. 
-
+### 3. Predictions on new sequences
+You have trained your model and are pleased with the model's predictive performance. Now you would like to use the saved model to make predictions on new sequences. To do so, type the following command in your terminal:
+```console
+python ./Codon2Vec/predict.py -model your_trained_model -fasta new_seqs.fasta -out name_of_output
+```
+Because of the slightly stochastic nature of the predict() function. I advise that you run the predictions multiple times (at least 10 times) and take the mean or median prediction probability.
 
 
 
