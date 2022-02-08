@@ -28,18 +28,19 @@ def preproc_exprs_matrix(exprs_matrix, exprs_percentile):
     #Checkpoint: expression table must have at least 2 columns with seqs IDs and their expression values
     print(df_exprs.shape, '\n\n')
     assert df_exprs.shape[1]>1,'SizeError: Expression table must have at least 2 columns.'
-   
     
     #retain first 2 cols and drop unused to reduce space 
     cols = df_exprs.columns
     df_exprs= df_exprs[cols[:2]]
      
-    #ensure that the ID column (1st column is type string)
+    #ensure that the ID and Expres columns are correct data types (1st column is type string and 2nd float)
     df_exprs[cols[0]]= df_exprs[cols[0]].astype(str)
+    df_exprs[cols[1]] = df_exprs[cols[1]].astype(float)
+   
     #1. sort values by exprs. Assume that relative expression is the 2nd column
     df_exprs.sort_values(by=cols[1], ascending=True)
-    #remove zero-valued expression 
-    df_exprs=df_exprs[ df_exprs[ cols[1] ]> 0.0]
+    #remove zero-valued expression or NaN
+    df_exprs=df_exprs[ df_exprs[ cols[1] ]!=0.0].dropna()
     
     #2. ##determine training quantiles cut-off 
     
