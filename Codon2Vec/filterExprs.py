@@ -37,7 +37,7 @@ def preproc_exprs_matrix(exprs_matrix, exprs_percentile):
     df_exprs[cols[0]]= df_exprs[cols[0]].astype(str)
     df_exprs[cols[1]] = df_exprs[cols[1]].astype(float)
    
-    #1. sort values by exprs. Assume that relative expression is the 2nd column
+    #1. sort values by exprs. Assume that expression is the 2nd column
     df_exprs.sort_values(by=cols[1], ascending=True)
     #remove zero-valued expression or NaN
     df_exprs=df_exprs[ df_exprs[ cols[1] ]!=0.0].dropna()
