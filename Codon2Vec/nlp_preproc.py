@@ -27,19 +27,15 @@ def preproc_features_labels(df_train):
         """
     codons = []
     labels = []
-    for i in range(len(df_train['CDS'].values)):
-            seq = df_train['CDS'].values[i]
-            if len(seq)%3 !=0:  ## only CDS that are exact multiple of 3
-                print('{} CDS is not multiple of 3....Skipping pair'.format(df_train['Seq_ID'].values[i]) )
-                continue
-            cod_list = []
-            for j in range(0, len(seq),3):
-                codon = seq[j:j+3]
-                cod_list.append(codon)
-              
-            cods = " ".join(cod_list)   #Represent CDS a space-delimited string of codons
-            codons.append(cods)
-            labels.append(df_train['Exprs_label'].values[i])
+    for i, seq_id in enumerate(df_train['Seq_ID'].values):
+        seq = df_train['CDS'].values[i]
+        if len(seq)%3 !=0:  ## only CDS that are exact multiple of 3
+            print(f"{seq_id} CDS is not multiple of 3....Skipping pair")
+            continue
+        cod_list = [seq[j:j+3] for j in range(0, len(seq), 3)]
+        cods = " ".join(cod_list)   #Represent CDS a space-delimited string of codons
+        codons.append(cods)
+        labels.append(df_train['Exprs_label'].values[i])
     return codons,labels
 
 ###--->PartB. Padding of codons AND categorical encoding of labels 
@@ -58,13 +54,7 @@ def encode_features_labels(codons,labels,max_len):
     padded_codons = pad_sequences(encoded_codons,maxlen= max_len, padding='post')
     
     ##one hot encode expression labels
-    target = []
-    for exprs in labels:
-        if exprs == 'Low':
-            target.append(0)
-        if exprs == 'High':
-            target.append(1)
-    target = np.asarray(target)
+    target = to_categorical(np.where(np.array(labels) == 'High', 1, 0))
     print('label shape={} before categorical encoding'.format(target.shape))
     target= np.squeeze(np.asarray(target))
     target = target.reshape(target.shape[0],1)
