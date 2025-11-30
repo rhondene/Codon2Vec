@@ -1,0 +1,2 @@
+Fungal_training_data_459_species_JGI filter=lfs diff=lfs merge=lfs -text
+Fungal_training_data_459_species_JGI/*.tar.gz filter=lfs diff=lfs merge=lfs -text
